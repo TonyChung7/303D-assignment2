@@ -4,10 +4,11 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Octicons from "@expo/vector-icons/Octicons";
 
 import React from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import {
-  SafeAreaView,
   ScrollView,
+  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -17,6 +18,7 @@ import {
 export default function Index() {
   return (
     <SafeAreaView style={styles.safe}>
+      <StatusBar barStyle="dark-content" />
       {/* Top Header */}
       <View style={styles.header}>
         <TouchableOpacity style={styles.headerIconBtn}>
@@ -76,7 +78,7 @@ const styles = StyleSheet.create({
   },
   headerIconBtn: {
     position: "absolute",
-    left: 16,
+    left: 0,
     width: 40,
     height: 40,
     alignItems: "center",
