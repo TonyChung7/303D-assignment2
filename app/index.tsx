@@ -1,10 +1,13 @@
-import AntDesign from "@expo/vector-icons/AntDesign";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import Octicons from "@expo/vector-icons/Octicons";
 
 import React from "react";
 
 import {
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -20,13 +23,37 @@ export default function Index() {
           <Ionicons name="chevron-back" size={24} color="black" />
         </TouchableOpacity>
 
-        <View style={styles.headerTitleWrap}>
+        <View style={styles.headerTitleWrap} pointerEvents="none">
           <Text style={styles.headerSmall}>OOTD_EVERYDAY</Text>
           <Text style={styles.headerTitle}>Posts</Text>
         </View>
+      </View>
 
-        <TouchableOpacity style={styles.headerIconBtn}>
-          <AntDesign name="ellipsis" size={24} color="black" />
+      <ScrollView
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
+      ></ScrollView>
+
+      {/* Bottom Nav */}
+      <View style={styles.bottomNav}>
+        <TouchableOpacity style={styles.navItem}>
+          <Octicons name="home" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navItem}>
+          <Octicons name="search" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navItem}>
+          <MaterialCommunityIcons
+            name="movie-open-play-outline"
+            size={24}
+            color="black"
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navItem}>
+          <Ionicons name="bag-handle-outline" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navItem}>
+          <FontAwesome name="user-circle" size={24} color="black" />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -41,26 +68,24 @@ const styles = StyleSheet.create({
 
   header: {
     height: 58,
+    backgroundColor: "#FFF",
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: "#E6E6E6",
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 14,
-    justifyContent: "space-between",
-    backgroundColor: "#FFF",
+    position: "relative",
+    justifyContent: "center",
   },
   headerIconBtn: {
+    position: "absolute",
+    left: 16,
     width: 40,
     height: 40,
     alignItems: "center",
     justifyContent: "center",
   },
-  headerIcon: {
-    fontSize: 22,
-    color: "#111",
-    fontWeight: "600",
-  },
   headerTitleWrap: {
+    position: "absolute",
+    left: 0,
+    right: 0,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -74,5 +99,31 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#111",
     marginTop: 2,
+  },
+
+  scrollContent: {
+    paddingBottom: 0,
+  },
+
+  bottomNav: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: 72,
+    backgroundColor: "#FFF",
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: "#E6E6E6",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+    paddingBottom: 10,
+    paddingTop: 10,
+  },
+  navItem: {
+    width: 48,
+    height: 48,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
