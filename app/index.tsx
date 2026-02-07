@@ -1,4 +1,8 @@
+import AntDesign from "@expo/vector-icons/AntDesign";
+import Ionicons from "@expo/vector-icons/Ionicons";
+
 import React from "react";
+
 import {
   SafeAreaView,
   StyleSheet,
@@ -13,7 +17,7 @@ export default function Index() {
       {/* Top Header */}
       <View style={styles.header}>
         <TouchableOpacity style={styles.headerIconBtn}>
-          <Text style={styles.headerIcon}>‹</Text>
+          <Ionicons name="chevron-back" size={24} color="black" />
         </TouchableOpacity>
 
         <View style={styles.headerTitleWrap}>
@@ -22,7 +26,7 @@ export default function Index() {
         </View>
 
         <TouchableOpacity style={styles.headerIconBtn}>
-          <Text style={styles.headerIcon}>⋯</Text>
+          <AntDesign name="ellipsis" size={24} color="black" />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
