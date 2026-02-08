@@ -9,7 +9,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import {
   Alert,
-  Dimensions,
   Image,
   Platform,
   ScrollView,
@@ -19,8 +18,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-
-const { width: windowWidth } = Dimensions.get("window");
 
 export default function Index() {
   const onPressAlert = () => {
@@ -256,7 +253,7 @@ const styles = StyleSheet.create({
 
   postImage: {
     width: "100%",
-    height: 600,
+    height: undefined,
     aspectRatio: 4 / 5,
   },
 
