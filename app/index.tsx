@@ -1,14 +1,17 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Octicons from "@expo/vector-icons/Octicons";
 
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import {
+  Alert,
   Dimensions,
   Image,
+  Platform,
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -20,6 +23,14 @@ import {
 const { width: windowWidth } = Dimensions.get("window");
 
 export default function Index() {
+  const onPressAlert = () => {
+    if (Platform.OS === "web") {
+      window.alert("Alert Button pressed");
+    } else {
+      Alert.alert("Alert Button pressed");
+    }
+  };
+
   return (
     <SafeAreaView style={styles.safe}>
       <StatusBar barStyle="dark-content" />
@@ -51,7 +62,7 @@ export default function Index() {
             </View>
           </View>
           <TouchableOpacity style={styles.settingBtn}>
-            <Text style={styles.settingText}>⋯</Text>
+            <MaterialIcons name="more-horiz" size={24} color="black" />
           </TouchableOpacity>
         </View>
         <Image
@@ -117,6 +128,17 @@ export default function Index() {
           </View>
           <Text style={styles.postTime}>1 day ago</Text>
         </View>
+        {/* Bottom Alert Button */}
+        <TouchableOpacity
+          style={styles.alertBtn}
+          onPress={onPressAlert}
+          activeOpacity={0.9}
+        >
+          <Text style={styles.alertBtnText}>Alert</Text>
+        </TouchableOpacity>
+
+        {/* Spacer so bottom nav doesn't cover content */}
+        <View style={{ height: 90 }} />
       </ScrollView>
 
       {/* Bottom Nav */}
@@ -187,9 +209,9 @@ const styles = StyleSheet.create({
   },
 
   scrollContent: {
-    paddingBottom: 38,
-    width: windowWidth,
-    maxWidth: windowWidth,
+    paddingBottom: 72 + 10,
+    // width: windowWidth,
+    // maxWidth: windowWidth,
   },
 
   userRow: {
@@ -233,8 +255,8 @@ const styles = StyleSheet.create({
   },
 
   postImage: {
-    width: windowWidth,
-    height: undefined,
+    width: "100%",
+    height: 600,
     aspectRatio: 4 / 5,
   },
 
@@ -321,5 +343,20 @@ const styles = StyleSheet.create({
     height: 48,
     alignItems: "center",
     justifyContent: "center",
+  },
+  alertBtn: {
+    marginHorizontal: 14,
+    marginTop: 18,
+    height: 48,
+    borderRadius: 12,
+    backgroundColor: "#133bf1",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  alertBtnText: {
+    color: "#FFF",
+    fontSize: 15,
+    fontWeight: "700",
+    letterSpacing: 0.3,
   },
 });
